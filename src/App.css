@@ -8,7 +8,7 @@
   background-image: url("./assets/warm.jpeg");
 }
 .App.Cold {
-  background-image: url("./assets/cold.jpeg");
+  background-image: url("./assets/clouds.jpeg");
 }
 main {
   height: 100vh;
