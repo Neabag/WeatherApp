@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 const api = {
   key: "f7fd9ad508d3cc03e604f035578f6f53",
@@ -8,6 +8,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
+  const inputEl = useRef(null);
+
   const search = event => {
     if (event.key === "Enter") {
       fetch(`${api.base}?q=${query}&units=metric&APPID=${api.key}`)
@@ -15,8 +17,9 @@ function App() {
         .then(result => {
           setWeather(result);
           setQuery('');
-          console.log(weather);
-          console.log(result);
+          inputEl.current.blur();
+          // console.log(weather);
+          // console.log(result);
 
         });
     }
@@ -30,9 +33,8 @@ function App() {
     let date = d.getDate();
     let month = months[d.getMonth()];
     let year = d.getFullYear();
-
     return `${day} ${date} ${month} ${year}`
-  }
+  };
   return (
     <div className={(typeof weather.main != 'undefined') ? ((weather.main.temp > 28) ? "App Warm" : "App Cold") : "App"}>
       <main>
@@ -42,6 +44,8 @@ function App() {
             placeholder="Enter City Name"
             onChange={e => setQuery(e.target.value)}
             value={query}
+            ref={inputEl}
+            autoFocus={true}
             onKeyPress={search}
           /></div>
         {(typeof weather.main != 'undefined') ? (
