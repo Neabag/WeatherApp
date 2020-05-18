@@ -20,7 +20,6 @@ function App() {
           inputEl.current.blur();
           // console.log(weather);
           // console.log(result);
-
         });
     }
   }
