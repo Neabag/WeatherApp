@@ -1,4 +1,4 @@
-Checkout the app [here] (https://vigilant-williams-d02e1b.netlify.app)
+Checkout the app [here](https://vigilant-williams-d02e1b.netlify.app)
 
 ## Available Scripts
 
